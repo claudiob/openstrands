@@ -1,0 +1,8 @@
+development:
+  api_key: 123A45BC6
+
+test:
+  api_key: 123A45BC6
+
+production:
+  api_key: 123A45BC6

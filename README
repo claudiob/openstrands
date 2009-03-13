@@ -1,0 +1,67 @@
+Openstrands
+===========
+
+Provides functions to retrieve knowledge about musical objects through the
+OpenStrands Web Service (http://open.strands.com)
+
+* Make sure to put your Openstrands key config/openstrands.yml.
+
+State
+=======
+
+In development
+
+To do
+=======
+
+* Update authentication to the new models using OAuth
+* Include both match and lookup functions
+* Extend from tracks to artists, albums, genres, etc.
+
+Example
+=======
+
+# // songs_controller.rb
+
+class SongsController < ApplicationController
+  openstrands
+
+  def show
+    @song = Song.find(params[:id])
+    @track = openstrands_lookup_track(params[:id])
+  end
+end
+
+# // songs/show.html.erb
+
+<p>Track: <%= @track[:track_name] %></p>
+<p>Album: <%= @track[:album_name] %></p>
+<%= image_tag(@track[:cover_uri]) %>
+
+Methods
+=======
+
+ def openstrands_lookup_track(id)
+
+Given an Openstrands track ID returns a hash of metadata.
+Example: @track = openstrands_lookup_track(2704707) returns
+@track[:track_name] => 'She will be loved'
+@track[:artist_name] => 'Maroon 5', etc.
+
+Credits
+=======
+
+The structure of this plugin resembles the Last.fm plugin developed by
+Gordon B. Isnor and available at http://github.com/gordonbisnor/lastfm/
+hoping these plugins will be merged someday.. :-)
+
+
+
+
+Copyright (c) 2009 Claudio Baccigalupo, released under the MIT license
+
+
+
+
+
+
