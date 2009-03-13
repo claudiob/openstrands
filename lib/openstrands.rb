@@ -35,7 +35,6 @@ module Openstrands
             xml.root.elements["SimpleTrack/#{field}"].text : ''
         end
         track.symbolize_keys!
-        debugger
       end
       return track
     end 
